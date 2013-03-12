@@ -1,6 +1,10 @@
 filetype off
 set rtp+=$VIMFILES/bundle/vundle/
-call vundle#rc()
+if has("win32")
+  call vundle#rc('$VIMFILES/bundle')
+else
+  call vundle#rc()
+endif
 
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
@@ -23,7 +27,6 @@ Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-surround'
 Bundle 'abudden/TagHighlight'
 Bundle 'taglist.vim'
-Bundle 'wesleyche/Trinity'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'VisIncr'
