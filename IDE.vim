@@ -1,10 +1,6 @@
 filetype off
 set rtp+=$VIMFILES/bundle/vundle/
-if has("win32")
-  call vundle#rc('$VIMFILES/bundle')
-else
-  call vundle#rc()
-endif
+call vundle#rc('$VIMFILES/bundle')
 
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
