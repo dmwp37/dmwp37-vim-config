@@ -146,7 +146,7 @@ function! <SID>Trinity_InitSourceExplorer()
     let g:SrcExpl_isUpdateTags = 0
     " // Use program 'ctags' with argument '--sort=foldcase -R' to create or       "
     " // update a tags file                                                        "
-    let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
+    let g:SrcExpl_updateTagsCmd = 'ctags --fields=+lS -R '.getcwd()
     " // Set "<F12>" key for updating the tags file artificially                   "
     let g:SrcExpl_updateTagsKey = "<F12>"
 
