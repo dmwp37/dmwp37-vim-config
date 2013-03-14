@@ -124,7 +124,7 @@ set showcmd
 set showmode
 set modeline
 " set nofoldenable			" switch off folding by default (startup time!)
-set switchbuf=split,useopen
+set switchbuf=useopen,usetab,newtab
 
 set noautochdir
 set nostartofline
