@@ -126,6 +126,7 @@ set modeline
 " set nofoldenable			" switch off folding by default (startup time!)
 set switchbuf=split,useopen
 
+set noautochdir
 set nostartofline
 set ttyfast
 set lazyredraw

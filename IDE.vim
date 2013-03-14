@@ -176,7 +176,8 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 " Recursive grep search
 nnoremap <silent> <F3> :Rgrep<CR>
 
-
+" <F12> is generate tags see trinity.vim
+let g:SrcExpl_isUpdateTags = 0
 
 " Open and close all the three plugins on the same time
 nmap <F8>   :TrinityToggleAll<CR>
