@@ -508,7 +508,11 @@ function! s:RunGrepRecursive(cmd_name, grep_cmd, action, ...)
             return
         endif
 
-    " windows cmd doesn't support quote very well
+        " hilight the search pattern
+        let  @/=pattern
+        set hlsearch
+
+        " windows cmd doesn't support quote very well
         if has("win32") || has("win16") || has("win95")
             let pattern = '"""' . pattern . '"""'
         else

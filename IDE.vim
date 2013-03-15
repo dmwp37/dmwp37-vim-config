@@ -175,6 +175,13 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
 " Recursive grep search
 nnoremap <silent> <F3> :Rgrep<CR>
+nnoremap <silent> <F4> :cn!<CR>:echo<CR>
+if has("gui_running")
+    nnoremap <silent> <S-F4> :cp!<CR>:echo<CR>
+else
+    nnoremap <silent> <Undo> :cp!<CR>:echo<CR>
+endif
+
 
 " <F12> is generate tags see trinity.vim
 let g:SrcExpl_isUpdateTags = 0
