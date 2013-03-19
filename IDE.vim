@@ -28,6 +28,7 @@ Bundle 'Shougo/vimshell'
 Bundle 'VisIncr'
 Bundle 'Visual-Mark'
 Bundle 'DoxyGen-Syntax'
+Bundle 'xuhdev/SingleCompile'
 
 
 " TagHighlight Settings
@@ -182,6 +183,8 @@ else
     nnoremap <silent> <Undo> :cp!<CR>:echo<CR>
 endif
 
+"SingleCompile settings
+nmap <F5> :SCCompileRun<cr>
 
 " <F12> is generate tags see trinity.vim
 let g:SrcExpl_isUpdateTags = 0
