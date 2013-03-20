@@ -13,7 +13,6 @@ Bundle 'CSApprox'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mbbill/echofunc'
-Bundle 'matchit.zip'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'scrooloose/nerdtree'
@@ -30,6 +29,8 @@ Bundle 'Visual-Mark'
 Bundle 'DoxyGen-Syntax'
 Bundle 'xuhdev/SingleCompile'
 
+" Enable matchit plugin
+source $VIMRUNTIME/macros/matchit.vim
 
 " TagHighlight Settings
 if ! exists('g:TagHighlightSettings')
