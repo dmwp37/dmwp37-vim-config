@@ -128,7 +128,9 @@ let g:acp_enableAtStartup = 0
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
-let g:neocomplcache_enable_smart_case = 0
+let g:neocomplcache_enable_smart_case = 1
+" Case sensitive
+let g:neocomplcache_enable_ignore_case = 0
 " Use camel case completion.
 let g:neocomplcache_enable_camel_case_completion = 1
 " Use underbar completion.
