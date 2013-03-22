@@ -14,7 +14,10 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 5. need to change TagHighlight HEAD
 6. clang_complete need libclang and python installed
 
-install msysgit for vundle under windows, please read vundle docs
+for windows
+1. install msysgit for vundle under windows, please read vundle docs
+2. install the font under win32/font for powerline
+3. copy the binary to $VIMRUNTIME from win32/bin
 
 you can download libclang from
 http://www.ishani.org/web/articles/code/clang-win32/
