@@ -30,7 +30,7 @@ Bundle 'DoxyGen-Syntax'
 Bundle 'xuhdev/SingleCompile'
 
 " now only windows support clang_complete
-if has("win32")
+if 0 " has("win32")
   Bundle 'Rip-Rip/clang_complete'
   Bundle 'Shougo/neocomplcache-clang_complete'
 
@@ -68,9 +68,9 @@ source $VIMRUNTIME/macros/matchit.vim
 if ! exists('g:TagHighlightSettings')
     let g:TagHighlightSettings = {}
 endif
-
-" cygwin doesn't support python
-if has('win32unix')
+if has('win32')
+    let g:TagHighlightSettings['ForcedPythonVariant'] = 'compiled'
+elseif has('win32unix')
     let g:TagHighlightSettings['ForcedPythonVariant'] = 'python' 
     let g:TagHighlightSettings['PathToPython'] = '/usr/bin/python'
     let g:TagHighlightSettings['CtagsExecutable'] = '/usr/bin/ctags'

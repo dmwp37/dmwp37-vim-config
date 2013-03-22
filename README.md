@@ -12,7 +12,7 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 3. :BundleInstall
 4. need to build vimproc for different platforms
 5. need to change TagHighlight HEAD
-6. clang_complete need libclang
+6. clang_complete need libclang and python installed
 
 install msysgit for vundle under windows, please read vundle docs
 
