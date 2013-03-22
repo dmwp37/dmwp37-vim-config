@@ -2,6 +2,8 @@ filetype off
 set rtp+=$VIMFILES/bundle/vundle/
 call vundle#rc('$VIMFILES/bundle')
 
+let g:neocomplcache_enable=1
+
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
@@ -13,8 +15,10 @@ Bundle 'CSApprox'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mbbill/echofunc'
+if exists("g:neocomplcache_enable")
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
+endif
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'wesleyche/SrcExpl'
@@ -68,13 +72,16 @@ source $VIMRUNTIME/macros/matchit.vim
 if ! exists('g:TagHighlightSettings')
     let g:TagHighlightSettings = {}
 endif
-if has('win32')
+
+if !has("python")
+  if has('win32')
     let g:TagHighlightSettings['ForcedPythonVariant'] = 'compiled'
-elseif has('win32unix')
+  elseif has('win32unix')
     let g:TagHighlightSettings['ForcedPythonVariant'] = 'python' 
     let g:TagHighlightSettings['PathToPython'] = '/usr/bin/python'
     let g:TagHighlightSettings['CtagsExecutable'] = '/usr/bin/ctags'
     let Tlist_Ctags_Cmd="/usr/bin/ctags"
+  endif
 endif
 
 " Grep options
@@ -122,7 +129,7 @@ let g:SuperTabRetainCompletionType=2
 
 " neocomplcache settings
 " http://www.cnblogs.com/likeyu/archive/2012/03/24/2415070.html
-
+if exists("neocomplcache_enable")
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -208,6 +215,7 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+endif
 
 " Recursive grep search
 nnoremap <silent> <F3> :Rgrep<CR>
