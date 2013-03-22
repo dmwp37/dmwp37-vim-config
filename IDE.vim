@@ -29,6 +29,38 @@ Bundle 'Visual-Mark'
 Bundle 'DoxyGen-Syntax'
 Bundle 'xuhdev/SingleCompile'
 
+" now only windows support clang_complete
+if has("win32")
+  Bundle 'Rip-Rip/clang_complete'
+  Bundle 'Shougo/neocomplcache-clang_complete'
+
+  " add clang_complete settings
+  let g:clang_complete_auto=1
+  let g:clang_use_library = 1
+  let g:clang_complete_copen = 1
+  let g:clang_hl_errors=1
+  let g:clang_auto_select = 0
+  let g:clang_auto_user_options='path, .clang_complete'
+  let g:clang_user_options='|| exit 0'
+  
+  let g:neocomplcache_force_overwrite_completefunc = 1 
+  if !exists('g:neocomplcache_force_omni_patterns')
+      let g:neocomplcache_force_omni_patterns = {}
+  endif                                                
+  let g:neocomplcache_force_omni_patterns.c =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)'         
+  let g:neocomplcache_force_omni_patterns.cpp =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.objc =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.objcpp =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+	      
+  " <F7> mapping for code check
+  nnoremap <silent> <F7> :call g:ClangUpdateQuickFix()<CR>
+
+endif
+
 " Enable matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
 
@@ -36,9 +68,9 @@ source $VIMRUNTIME/macros/matchit.vim
 if ! exists('g:TagHighlightSettings')
     let g:TagHighlightSettings = {}
 endif
-if has('win32')
-    let g:TagHighlightSettings['ForcedPythonVariant'] = 'compiled'
-elseif has('win32unix')
+
+" cygwin doesn't support python
+if has('win32unix')
     let g:TagHighlightSettings['ForcedPythonVariant'] = 'python' 
     let g:TagHighlightSettings['PathToPython'] = '/usr/bin/python'
     let g:TagHighlightSettings['CtagsExecutable'] = '/usr/bin/ctags'
@@ -96,7 +128,7 @@ let g:acp_enableAtStartup = 0
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_smart_case = 0
 " Use camel case completion.
 let g:neocomplcache_enable_camel_case_completion = 1
 " Use underbar completion.
@@ -185,7 +217,7 @@ else
 endif
 
 "SingleCompile settings
-nmap <F5> :SCCompileRun<cr>
+nmap <F5> :SCCompileRun<CR>
 
 " <F12> is generate tags see trinity.vim
 let g:SrcExpl_isUpdateTags = 0
