@@ -129,7 +129,7 @@ let g:neosnippet#snippets_directory=$VIMFILES.'/snippets'
 let g:neosnippet#disable_select_mode_mappings=0
 
 " supertab settins
-let g:SuperTabDefaultCompletionType="context" 
+let g:SuperTabDefaultCompletionType="<c-x><c-o>"
 let g:SuperTabRetainCompletionType=2
 
 " neocomplcache settings
