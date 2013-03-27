@@ -145,6 +145,7 @@ set dict+=$VIMFILES/dict/simple.dic
 set path=.,/usr/include,/usr/X11/include,/usr/local/include
 " Set the filename completion order
 set complete=.,w,b,u,i
+set completeopt-=preview
 
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

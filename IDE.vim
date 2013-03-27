@@ -3,12 +3,14 @@ set rtp+=$VIMFILES/bundle/vundle/
 call vundle#rc('$VIMFILES/bundle')
 
 let g:neocomplcache_enable=1
+"let g:clang_complete_enable=1
 
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
 " my scripts
 Bundle 'a.vim'
+Bundle 'jiangmiao/auto-pairs'
 Bundle 'tpope/vim-abolish'
 Bundle 'bufexplorer.zip'
 Bundle 'CSApprox'
@@ -34,7 +36,7 @@ Bundle 'DoxyGen-Syntax'
 Bundle 'xuhdev/SingleCompile'
 
 " now only windows support clang_complete
-if 0 " has("win32")
+if exists("g:clang_complete_enable") && has("win32")
   Bundle 'Rip-Rip/clang_complete'
   Bundle 'Shougo/neocomplcache-clang_complete'
 
@@ -67,6 +69,9 @@ endif
 
 " Enable matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
+
+" auto-pairs settings
+let g:AutoPairsFlyMode = 1
 
 " TagHighlight Settings
 if ! exists('g:TagHighlightSettings')
