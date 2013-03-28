@@ -2,19 +2,12 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-if has('win32')
-    let $VIMFILES = $VIM.'/vimfiles'
-else
-    let $VIMFILES = $HOME.'/.vim'
-endif
-
-" set for the plugin
-source $VIMFILES/IDE.vim
-
 " language settings
-set encoding=utf-8
-set fileencodings=utf-8,gbk,ucs-bom,cp936,chinese
-set ambiwidth=double
+if !has("win32") || has("gui_running")
+    set encoding=utf-8
+    set fileencodings=utf-8,gbk,ucs-bom,cp936,chinese
+    set ambiwidth=double
+endif
 
 language messages en_US.UTF-8
 
@@ -23,6 +16,15 @@ if has('win32')
 else
     set fileencoding=utf-8
 endif
+
+if has('win32')
+    let $VIMFILES = $VIM.'/vimfiles'
+else
+    let $VIMFILES = $HOME.'/.vim'
+endif
+
+" set for the plugin
+source $VIMFILES/IDE.vim
 
 " this is for windows gvim
 if has("win32") && has("gui_running")

@@ -13,16 +13,10 @@ Bundle 'a.vim'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'tpope/vim-abolish'
 Bundle 'bufexplorer.zip'
-Bundle 'CSApprox'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mbbill/echofunc'
-if exists("g:neocomplcache_enable")
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-endif
 Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'wesleyche/SrcExpl'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-surround'
@@ -34,6 +28,19 @@ Bundle 'VisIncr'
 Bundle 'Visual-Mark'
 Bundle 'DoxyGen-Syntax'
 Bundle 'xuhdev/SingleCompile'
+
+if &term == "xterm"
+  Bundle 'CSApprox'
+endif
+
+if &encoding == 'utf-8'
+  Bundle 'Lokaltog/vim-powerline'
+endif
+
+if exists("g:neocomplcache_enable")
+  Bundle 'Shougo/neocomplcache'
+  Bundle 'Shougo/neosnippet'
+endif
 
 " now only windows support clang_complete
 if exists("g:clang_complete_enable") && has("win32")
