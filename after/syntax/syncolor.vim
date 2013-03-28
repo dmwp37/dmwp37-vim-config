@@ -1,6 +1,8 @@
 " the xterm color map is from https://github.com/guns/xterm-color-table.vim/blob/master/plugin/xterm-color-table.vim
 " my colorscheme formatoptions C/C++
-if &background == "light"
+if &term == "win32"
+    " do nothing for the windows cmd
+elseif &background == "light"
     hi cComment              ctermfg=28      guifg=#008000
     hi cInclude              ctermfg=21      guifg=#0000ff
     hi cIncluded             ctermfg=88      guifg=#800000

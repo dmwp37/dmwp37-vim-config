@@ -29,7 +29,7 @@ Bundle 'Visual-Mark'
 Bundle 'DoxyGen-Syntax'
 Bundle 'xuhdev/SingleCompile'
 
-if &term == "xterm"
+if &term != "win32"
   Bundle 'CSApprox'
 endif
 
