@@ -16,9 +16,10 @@ set encoding=utf-8
 set fileencodings=utf-8,gbk,ucs-bom,cp936,chinese
 set ambiwidth=double
 
+language messages en_US.UTF-8
+
 if has('win32')
     set fileencoding=chinese
-    language messages zh_CN.UTF-8
 else
     set fileencoding=utf-8
 endif
