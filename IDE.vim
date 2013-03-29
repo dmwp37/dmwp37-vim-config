@@ -3,7 +3,6 @@ set rtp+=$VIMFILES/bundle/vundle/
 call vundle#rc('$VIMFILES/bundle')
 
 let g:neocomplcache_enable=1
-"let g:clang_complete_enable=1
 
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
@@ -40,10 +39,7 @@ endif
 if exists("g:neocomplcache_enable")
   Bundle 'Shougo/neocomplcache'
   Bundle 'Shougo/neosnippet'
-endif
-
-" now only windows support clang_complete
-if exists("g:clang_complete_enable") && has("win32")
+if has("python")
   Bundle 'Rip-Rip/clang_complete'
   Bundle 'Shougo/neocomplcache-clang_complete'
 
@@ -71,7 +67,7 @@ if exists("g:clang_complete_enable") && has("win32")
 	      
   " <F7> mapping for code check
   nnoremap <silent> <F7> :call g:ClangUpdateQuickFix()<CR>
-
+endif
 endif
 
 " Enable matchit plugin
