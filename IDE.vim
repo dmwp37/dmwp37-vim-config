@@ -27,6 +27,7 @@ Bundle 'VisIncr'
 Bundle 'Visual-Mark'
 Bundle 'DoxyGen-Syntax'
 Bundle 'xuhdev/SingleCompile'
+Bundle 'tomtom/tcomment_vim'
 
 if &term != "win32"
   Bundle 'CSApprox'
