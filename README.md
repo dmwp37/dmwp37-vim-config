@@ -1,3 +1,6 @@
+git clone https://github.com/dmwp37/dmwp37-vim-config.git ~/.vim
+mv ~/.vim/_vimrc ~/.vimrc
+
 vim config project
 
 Install
