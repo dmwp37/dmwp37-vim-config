@@ -97,8 +97,8 @@ endif
 let g:Grep_Skip_Dirs='RCS CVS SCCS .git'
 if has('win32')
     let g:Grep_Cygwin_Find=1  " change \ to /
-    let g:Grep_Find_Path=$VIMRUNTIME.'\find' " don't use win find
-    let g:Grep_Xargs_Options='-n 256 --null' " fix cannot fork
+    let g:Grep_Find_Path='"""'.$VIMRUNTIME.'\find'.'"""' " don't use win find
+    let g:Grep_Xargs_Options='-n 180 --null' " fix cannot fork
 endif
 
 "echofunc settings

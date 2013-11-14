@@ -553,8 +553,13 @@ function! s:RunGrepRecursive(cmd_name, grep_cmd, action, ...)
               \ g:Grep_Shell_Quote_Char . one_pattern . g:Grep_Shell_Quote_Char
         let txt = strpart(txt, stridx(txt, ' ') + 1)
     endwhile
-    let find_file_pattern = g:Grep_Shell_Escape_Char . '(' .
+    if has("win32") || has("win16") || has("win95")
+      let find_file_pattern = g:Grep_Shell_Escape_Char . '"("' .
+                    \ find_file_pattern . ' ' . g:Grep_Shell_Escape_Char . '")"'
+    else
+      let find_file_pattern = g:Grep_Shell_Escape_Char . '(' .
                     \ find_file_pattern . ' ' . g:Grep_Shell_Escape_Char . ')'
+    endif
 
     let txt = g:Grep_Skip_Dirs
     let find_prune = ''
@@ -568,9 +573,13 @@ function! s:RunGrepRecursive(cmd_name, grep_cmd, action, ...)
             let find_prune = find_prune . ' -name ' . one_dir
             let txt = strpart(txt, stridx(txt, ' ') + 1)
         endwhile
-        let find_prune = '-type d ' . g:Grep_Shell_Escape_Char . '(' .
-                         \ find_prune
-        let find_prune = find_prune . ' ' . g:Grep_Shell_Escape_Char . ')'
+        if has("win32") || has("win16") || has("win95")
+          let find_prune = '-type d ' . g:Grep_Shell_Escape_Char . '"("' . find_prune
+          let find_prune = find_prune . ' ' . g:Grep_Shell_Escape_Char . '")"'
+        else
+          let find_prune = '-type d ' . g:Grep_Shell_Escape_Char . '(' . find_prune
+          let find_prune = find_prune . ' ' . g:Grep_Shell_Escape_Char . ')'
+        endif
     endif
 
     let txt = g:Grep_Skip_Files
