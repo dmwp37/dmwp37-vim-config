@@ -45,7 +45,7 @@ if has("python")
   Bundle 'Shougo/neocomplcache-clang_complete'
 
   " add clang_complete settings
-  let g:clang_complete_auto=0
+  let g:clang_complete_auto=1
   let g:clang_use_library = 1
   let g:clang_complete_copen = 1
   let g:clang_hl_errors=1
@@ -57,10 +57,14 @@ if has("python")
   if !exists('g:neocomplcache_force_omni_patterns')
       let g:neocomplcache_force_omni_patterns = {}
   endif                                                
-  let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'         
-  let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplcache_force_omni_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplcache_force_omni_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.c =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)'         
+  let g:neocomplcache_force_omni_patterns.cpp =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.objc =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:neocomplcache_force_omni_patterns.objcpp =
+              \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 	      
   " <F7> mapping for code check
   nnoremap <silent> <F7> :call g:ClangUpdateQuickFix()<CR>
@@ -71,7 +75,7 @@ endif
 source $VIMRUNTIME/macros/matchit.vim
 
 " auto-pairs settings
-let g:AutoPairsFlyMode = 0
+let g:AutoPairsFlyMode = 1
 
 " TagHighlight Settings
 if ! exists('g:TagHighlightSettings')

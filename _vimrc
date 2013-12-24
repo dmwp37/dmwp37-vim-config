@@ -145,11 +145,7 @@ set wildmenu
 " Point to dictionary
 set dict+=$VIMFILES/dict/simple.dic
 " Set path to include files for '[I'
-if has('win32')
-set path=.,c:/cygwin/usr/include,c:/cygwin/lib/gcc/i686-pc-cygwin/4.8.2/include
-else
-set path=.,/usr/include,/usr/lib/gcc/i686-pc-cygwin/4.8.2/include
-endif
+set path=.,/usr/include,/usr/X11/include,/usr/local/include
 " Set the filename completion order
 set complete=.,w,b,u,i
 set completeopt-=preview
