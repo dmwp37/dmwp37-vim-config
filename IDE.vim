@@ -39,7 +39,7 @@ endif
 
 if exists("g:neocomplcache_enable")
   Bundle 'Shougo/neocomplcache'
-  Bundle 'Shougo/neosnippet'
+  Bundle 'Shougo/neosnippet-snippets'
 if has("python")
   Bundle 'Rip-Rip/clang_complete'
   Bundle 'Shougo/neocomplcache-clang_complete'
