@@ -5,44 +5,43 @@ call vundle#rc('$VIMFILES/bundle')
 let g:neocomplcache_enable=1
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " my scripts
-Bundle 'a.vim'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'tpope/vim-abolish'
-Bundle 'bufexplorer.zip'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'mbbill/echofunc'
-Bundle 'scrooloose/nerdtree'
-Bundle 'wesleyche/SrcExpl'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-surround'
-Bundle 'abudden/TagHighlight'
-Bundle 'taglist.vim'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/vimshell'
-Bundle 'VisIncr'
-Bundle 'Visual-Mark'
-Bundle 'DoxyGen-Syntax'
-Bundle 'xuhdev/SingleCompile'
-Bundle 'tomtom/tcomment_vim'
+Plugin 'a.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-abolish'
+Plugin 'bufexplorer.zip'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'mbbill/echofunc'
+Plugin 'scrooloose/nerdtree'
+Plugin 'wesleyche/SrcExpl'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-surround'
+Plugin 'taglist.vim'
+Plugin 'Shougo/vimproc'
+Plugin 'Shougo/vimshell'
+Plugin 'VisIncr'
+Plugin 'Visual-Mark'
+Plugin 'DoxyGen-Syntax'
+Plugin 'xuhdev/SingleCompile'
+Plugin 'tomtom/tcomment_vim'
 
 if &term != "win32"
-  Bundle 'CSApprox'
+  Plugin 'CSApprox'
 endif
 
 if &encoding == 'utf-8'
-  Bundle 'Lokaltog/vim-powerline'
+  Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 endif
 
 if exists("g:neocomplcache_enable")
-  Bundle 'Shougo/neocomplcache'
-  Bundle 'Shougo/neosnippet-snippets'
+  Plugin 'Shougo/neocomplcache'
+  Plugin 'Shougo/neosnippet-snippets'
 if has("python")
-  Bundle 'Rip-Rip/clang_complete'
-  Bundle 'Shougo/neocomplcache-clang_complete'
+"  Plugin 'Rip-Rip/clang_complete'
+"  Plugin 'Shougo/neocomplcache-clang_complete'
 
   " add clang_complete settings
   let g:clang_complete_auto=0
@@ -52,16 +51,16 @@ if has("python")
   let g:clang_auto_select = 0
   let g:clang_auto_user_options='path, .clang_complete'
   let g:clang_user_options='|| exit 0'
-  
-  let g:neocomplcache_force_overwrite_completefunc = 1 
+
+  let g:neocomplcache_force_overwrite_completefunc = 1
   if !exists('g:neocomplcache_force_omni_patterns')
       let g:neocomplcache_force_omni_patterns = {}
-  endif                                                
-  let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'         
+  endif
+  let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
   let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:neocomplcache_force_omni_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   let g:neocomplcache_force_omni_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-	      
+
   " <F7> mapping for code check
   nnoremap <silent> <F7> :call g:ClangUpdateQuickFix()<CR>
 endif
@@ -72,22 +71,6 @@ source $VIMRUNTIME/macros/matchit.vim
 
 " auto-pairs settings
 let g:AutoPairsFlyMode = 0
-
-" TagHighlight Settings
-if ! exists('g:TagHighlightSettings')
-    let g:TagHighlightSettings = {}
-endif
-
-if !has("python")
-  if has('win32')
-    let g:TagHighlightSettings['ForcedPythonVariant'] = 'compiled'
-  elseif has('win32unix')
-    let g:TagHighlightSettings['ForcedPythonVariant'] = 'python' 
-    let g:TagHighlightSettings['PathToPython'] = '/usr/bin/python'
-    let g:TagHighlightSettings['CtagsExecutable'] = '/usr/bin/ctags'
-    let Tlist_Ctags_Cmd="/usr/bin/ctags"
-  endif
-endif
 
 " Grep options
 let g:Grep_Skip_Dirs='RCS CVS SCCS .git'
@@ -105,10 +88,6 @@ if !has('gui_running')
     let g:EchoFuncKeyPrev='='
 endif
 
-" Powerline Settings
-let g:Powerline_colorscheme='solarized256'
-let g:Powerline_stl_path_style='full'
-let g:Powerline_symbols='fancy'
 
 " Easymotion settings
 hi link EasyMotionTarget ErrorMsg
