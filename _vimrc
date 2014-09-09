@@ -6,7 +6,7 @@ set nocompatible
 if !has("win32") || has("gui_running")
     set encoding=utf-8
     set fileencodings=utf-8,gbk,ucs-bom,cp936,chinese
-    set ambiwidth=double
+    set ambiwidth=single
 endif
 
 language messages en_US.UTF-8
@@ -21,6 +21,7 @@ if has('win32')
     let $VIMFILES = $VIM.'/vimfiles'
 else
     let $VIMFILES = $HOME.'/.vim'
+    cmap w!! w !sudo tee > /dev/null %
 endif
 
 " set for the plugin
@@ -116,7 +117,7 @@ set smartcase
 set backspace=indent,eol,start
 set joinspaces
 set nrformats=hex
-set formatoptions+=n2		" in plain text, gq recognizes numbered lists 
+set formatoptions+=n2		" in plain text, gq recognizes numbered lists
 
 set helpheight=0
 set cmdheight=1
@@ -133,7 +134,7 @@ set noautochdir
 set nostartofline
 set ttyfast
 set lazyredraw
-set updatecount=0       " don't create swap file 
+set updatecount=0       " don't create swap file
 set updatetime=100      " saves power on notebooks
 "set visualbell          " this would make the flicker
 
