@@ -19,7 +19,8 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 for windows
 1. install msysgit for vundle under windows, please read vundle docs
-2. install the font under win32/font for powerline
+2. install the powerline-font from:
+   https://github.com/Lokaltog/powerline-fonts
 3. copy the binary to $VIMRUNTIME from win32/bin
 
 you can download libclang from
