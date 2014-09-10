@@ -17,7 +17,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mbbill/echofunc'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wesleyche/SrcExpl'
-Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-surround'
 Plugin 'taglist.vim'
 Plugin 'Shougo/vimproc'
@@ -27,44 +26,29 @@ Plugin 'Visual-Mark'
 Plugin 'DoxyGen-Syntax'
 Plugin 'xuhdev/SingleCompile'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
 
 if &term != "win32"
   Plugin 'CSApprox'
 endif
 
 if &encoding == 'utf-8'
-  Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+  "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+  Plugin 'bling/vim-airline'
 endif
 
-if exists("g:neocomplcache_enable")
-  Plugin 'Shougo/neocomplcache'
-  Plugin 'Shougo/neosnippet-snippets'
-if has("python")
-"  Plugin 'Rip-Rip/clang_complete'
-"  Plugin 'Shougo/neocomplcache-clang_complete'
 
-  " add clang_complete settings
-  let g:clang_complete_auto=0
-  let g:clang_use_library = 1
-  let g:clang_complete_copen = 1
-  let g:clang_hl_errors=1
-  let g:clang_auto_select = 0
-  let g:clang_auto_user_options='path, .clang_complete'
-  let g:clang_user_options='|| exit 0'
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
 
-  let g:neocomplcache_force_overwrite_completefunc = 1
-  if !exists('g:neocomplcache_force_omni_patterns')
-      let g:neocomplcache_force_omni_patterns = {}
-  endif
-  let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-  let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplcache_force_omni_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-  let g:neocomplcache_force_omni_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-  " <F7> mapping for code check
-  nnoremap <silent> <F7> :call g:ClangUpdateQuickFix()<CR>
-endif
-endif
+" vim-airline
+let g:airline_powerline_fonts  = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Enable matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
@@ -103,17 +87,10 @@ let g:ctrlp_custom_ignore = {
     \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
     \ }
 
-" snippets settings
-let g:neosnippet#snippets_directory=$VIMFILES.'/snippets'
-let g:neosnippet#disable_select_mode_mappings=0
-
-" supertab settins
-let g:SuperTabDefaultCompletionType="<c-x><c-o>"
-let g:SuperTabRetainCompletionType=2
-
 " neocomplcache settings
 " http://www.cnblogs.com/likeyu/archive/2012/03/24/2415070.html
-if exists("neocomplcache_enable")
+if g:neocomplcache_enable == 1
+Plugin 'Shougo/neocomplcache'
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -148,7 +125,6 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'javascript' : $VIMFILES.'/dict/javascript.dic',
     \ }
 
-let g:neocomplcache_snippets_dir=$VIMFILES."/snippets"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 inoremap <expr><C-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 " Define keyword.
@@ -157,33 +133,28 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-z>  pumvisible() ? neocomplcache#undo_completion() : "\<C-o>U"
-"inoremap <expr><C-l>  neocomplcache#complete_common_string()
+inoremap <expr><C-g>  neocomplcache#undo_completion()
+inoremap <expr><C-l>  neocomplcache#complete_common_string()
 
-" SuperTab like snippets behavior.
-"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-" inoremap <expr><CR>  neocomplcache#close_popup() . "\<CR>"
-inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-" <TAB>: completion. THIS HAS NO USE WHEN WITH SNIPMATE
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <SPACE>: completion.
-"inoremap <expr><space>  pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" : "\<SPACE>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#close_popup()."\<C-h>"
-inoremap <expr><ESC> neocomplcache#close_popup()."\<ESC>"
-"inoremap <expr><C-y>  neocomplcache#close_popup()
-"inoremap <expr><C-e>  neocomplcache#cancel_popup()
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
-"inoremap <expr><CR>  neocomplcache#close_popup() . "\<CR>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+" Close popup by <Space>.
+inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
+
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -191,6 +162,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
@@ -199,6 +171,10 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+else
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*']
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 endif
 
 " Recursive grep search
