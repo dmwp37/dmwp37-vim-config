@@ -1,41 +1,52 @@
-filetype off
-set rtp+=$VIMFILES/bundle/vundle/
-call vundle#rc('$VIMFILES/bundle')
+if has('vim_starting')
+  set nocompatible               " Be iMproved
 
-let g:neocomplcache_enable=1
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-" let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
 
 " my scripts
-Plugin 'a.vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-abolish'
-Plugin 'bufexplorer.zip'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'mbbill/echofunc'
-Plugin 'scrooloose/nerdtree'
-Plugin 'wesleyche/SrcExpl'
-Plugin 'tpope/vim-surround'
-Plugin 'taglist.vim'
-Plugin 'Shougo/vimproc'
-Plugin 'Shougo/vimshell'
-Plugin 'VisIncr'
-Plugin 'Visual-Mark'
-Plugin 'DoxyGen-Syntax'
-Plugin 'xuhdev/SingleCompile'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
+NeoBundle 'a.vim'
+NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'bufexplorer.zip'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'mbbill/echofunc'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'wesleyche/SrcExpl'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'taglist.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'VisIncr'
+NeoBundle 'Visual-Mark'
+NeoBundle 'DoxyGen-Syntax'
+NeoBundle 'xuhdev/SingleCompile'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundleLazy 'Valloric/YouCompleteMe'
 
 if &term != "win32"
-  Plugin 'CSApprox'
+  NeoBundle 'CSApprox'
 endif
 
 if &encoding == 'utf-8'
-  "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-  Plugin 'bling/vim-airline'
+  "NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+  NeoBundle 'bling/vim-airline'
 endif
 
 
@@ -89,8 +100,6 @@ let g:ctrlp_custom_ignore = {
 
 " neocomplcache settings
 " http://www.cnblogs.com/likeyu/archive/2012/03/24/2415070.html
-if g:neocomplcache_enable == 1
-Plugin 'Shougo/neocomplcache'
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -132,7 +141,7 @@ if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-" Plugin key-mappings.
+" NeoBundle key-mappings.
 inoremap <expr><C-z>  pumvisible() ? neocomplcache#undo_completion() : "\<C-o>U"
 inoremap <expr><C-g>  neocomplcache#undo_completion()
 inoremap <expr><C-l>  neocomplcache#complete_common_string()
@@ -171,11 +180,10 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-else
-Plugin 'Valloric/YouCompleteMe'
+
+" YCM
 let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*']
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-endif
 
 " Recursive grep search
 nnoremap <silent> <F3> :Rgrep<CR>
@@ -203,4 +211,16 @@ nmap <F10>  :TrinityToggleTagList<CR>
 
 " Open and close the NERD_tree.vim separately
 nmap <F11>  :TrinityToggleNERDTree<CR>
+
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+autocmd FileType c,cpp,python NeoBundleSource YouCompleteMe
+autocmd FileType c,cpp,python NeoComplCacheLock
 
