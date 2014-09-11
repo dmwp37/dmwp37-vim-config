@@ -2,11 +2,11 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 
   " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=$VIMFILES/bundle/neobundle.vim/
 endif
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('$VIMFILES/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -38,8 +38,10 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/neocomplcache'
 
-if !has('unix')
+if !has('unix') || has('win32unix')
   NeoBundleLazy 'Valloric/YouCompleteMe'
+  autocmd FileType c,cpp,python NeoBundleSource YouCompleteMe
+  autocmd FileType c,cpp,python NeoComplCacheLock
 endif
 
 if &term != "win32"
@@ -223,8 +225,4 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
-if !has('unix')
-  autocmd FileType c,cpp,python NeoBundleSource YouCompleteMe
-  autocmd FileType c,cpp,python NeoComplCacheLock
-endif
 
