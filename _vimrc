@@ -25,7 +25,9 @@ else
 endif
 
 " set for the plugin
-source $VIMFILES/IDE.vim
+if v:version >= 704
+    source $VIMFILES/IDE.vim
+endif
 
 " this is for windows gvim
 if has("win32") && has("gui_running")
@@ -147,30 +149,29 @@ set wildmenu
 set dict+=$VIMFILES/dict/simple.dic
 " Set path to include files for '[I'
 if has('win32')
-set path=.,c:/cygwin/usr/include,c:/cygwin/lib/gcc/i686-pc-cygwin/4.8.2/include
+    set path=.,c:/cygwin/usr/include,c:/cygwin/lib/gcc/i686-pc-cygwin/4.8.2/include
 else
-set path=.,/usr/include,/usr/lib/gcc/i686-pc-cygwin/4.8.2/include
+    set path=.,/usr/include,/usr/lib/gcc/i686-pc-cygwin/4.8.2/include
 endif
 " Set the filename completion order
 set complete=.,w,b,u,i
 set completeopt-=preview
 
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-  filetype plugin indent on
+    filetype plugin indent on
 
-  autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif
-  autocmd FileType text source $VIMFILES/vimrc.wordlist
-  autocmd FileType text setlocal textwidth=78
+    autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif
+    autocmd FileType text source $VIMFILES/vimrc.wordlist
+    autocmd FileType text setlocal textwidth=78
 
-augroup makefile
-  au!
+    augroup makefile
+        au!
 
-  " Don't expand tabs in makefiles
-  autocmd BufReadPost,FileReadPost [m|M]akefile* set noet
-augroup END
-
+        " Don't expand tabs in makefiles
+        autocmd BufReadPost,FileReadPost [m|M]akefile* set noet
+    augroup END
 endif
 
 " Set nice colors

@@ -35,10 +35,12 @@ NeoBundle 'Visual-Mark'
 NeoBundle 'DoxyGen-Syntax'
 NeoBundle 'xuhdev/SingleCompile'
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundleLazy 'Valloric/YouCompleteMe'
+
+if !has('unix')
+  NeoBundleLazy 'Valloric/YouCompleteMe'
+endif
 
 if &term != "win32"
   NeoBundle 'CSApprox'
@@ -70,17 +72,17 @@ let g:AutoPairsFlyMode = 0
 " Grep options
 let g:Grep_Skip_Dirs='RCS CVS SCCS .git'
 if has('win32')
-    let g:Grep_Cygwin_Find=1  " change \ to /
-    let g:Grep_Find_Path='"""'.$VIMRUNTIME.'\find'.'"""' " don't use win find
-    let g:Grep_Xargs_Options='-n 180 --null' " fix cannot fork
+  let g:Grep_Cygwin_Find=1  " change \ to /
+  let g:Grep_Find_Path='"""'.$VIMRUNTIME.'\find'.'"""' " don't use win find
+  let g:Grep_Xargs_Options='-n 180 --null' " fix cannot fork
 endif
 
 "echofunc settings
     inoremap <c-]> <c-r>=EchoFunc()<cr>
 if !has('gui_running')
-    " when in terminal mode the ALT key is not supported
-    let g:EchoFuncKeyNext='-'
-    let g:EchoFuncKeyPrev='='
+  " when in terminal mode the ALT key is not supported
+  let g:EchoFuncKeyNext='-'
+  let g:EchoFuncKeyPrev='='
 endif
 
 
@@ -189,9 +191,9 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 nnoremap <silent> <F3> :Rgrep<CR>
 nnoremap <silent> <F4> :cn!<CR>:echo<CR>
 if has("gui_running")
-    nnoremap <silent> <S-F4> :cp!<CR>:echo<CR>
+  nnoremap <silent> <S-F4> :cp!<CR>:echo<CR>
 else
-    nnoremap <silent> <Undo> :cp!<CR>:echo<CR>
+  nnoremap <silent> <Undo> :cp!<CR>:echo<CR>
 endif
 
 "SingleCompile settings
@@ -221,6 +223,8 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
-autocmd FileType c,cpp,python NeoBundleSource YouCompleteMe
-autocmd FileType c,cpp,python NeoComplCacheLock
+if !has('unix')
+  autocmd FileType c,cpp,python NeoBundleSource YouCompleteMe
+  autocmd FileType c,cpp,python NeoComplCacheLock
+endif
 
