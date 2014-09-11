@@ -186,8 +186,8 @@ let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
 " YCM
-let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*']
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist = [$VIMFILES.'/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*']
+let g:ycm_global_ycm_extra_conf = $VIMFILES.'/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Recursive grep search
 nnoremap <silent> <F3> :Rgrep<CR>
