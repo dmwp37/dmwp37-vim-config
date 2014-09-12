@@ -16,4 +16,10 @@ for windows
 2. install the powerline-font from: https://github.com/Lokaltog/powerline-fonts
 3. copy the binary to $VIMRUNTIME from win32/bin
 
+ycm windows
+https://bitbucket.org/Haroogan/vim-youcompleteme-for-windows
+clang windows
+http://llvm.org/releases/download.html
+http://llvm.org/builds/ (latest)
+
 vim: ft=text
