@@ -42,7 +42,7 @@ if !has('unix') || has('win32unix')
   NeoBundleLazy 'Valloric/YouCompleteMe'
   autocmd FileType c,cpp,python NeoComplCacheLock
   autocmd FileType c,cpp,python NeoBundleSource YouCompleteMe
-  autocmd FileType c,cpp,python nnoremap <C-d> :YcmCompleter GoTo<CR>
+  autocmd FileType c,cpp,python nnoremap <buffer> <C-k> :YcmCompleter GoTo<CR>
 endif
 
 if &term != "win32"
