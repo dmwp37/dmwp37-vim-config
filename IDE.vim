@@ -54,16 +54,8 @@ if &encoding == 'utf-8'
   NeoBundle 'bling/vim-airline'
 endif
 
-
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-
 " vim-airline
-let g:airline_powerline_fonts  = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " Enable matchit plugin
@@ -188,6 +180,8 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
 " YCM
 let g:ycm_key_invoke_completion = '<C-j>'
+let g:ycm_error_symbol = '✗'
+let g:ycm_warning_symbol = '⚠'
 let g:ycm_extra_conf_globlist = [$VIMFILES.'/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*']
 let g:ycm_global_ycm_extra_conf = $VIMFILES.'/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
