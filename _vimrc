@@ -29,14 +29,6 @@ if v:version >= 704
     source $VIMFILES/IDE.vim
 endif
 
-" this is for windows gvim
-if has("win32") && has("gui_running")
-    set guioptions-=T
-    set guioptions+=A
-    set guifont=DejaVu_Sans_Mono_for_Powerline:h12:cANSI
-    set guifontwide=Fixedsys:h12
-endif
-
 if has("win32")
     "Windows options here
     source $VIMRUNTIME/vimrc_example.vim
@@ -44,6 +36,14 @@ if has("win32")
     unmap <C-Y>
     unmap <C-Z>
     iunmap <C-Y>
+endif
+
+" this is for windows gvim
+if has("win32") && has("gui_running")
+    set guioptions-=T
+    set guioptions+=A
+    set guifont=DejaVu_Sans_Mono_for_Powerline:h12:cANSI
+    set guifontwide=Fixedsys:h12
 endif
 
 " window movement

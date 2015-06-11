@@ -37,12 +37,15 @@ NeoBundle 'xuhdev/SingleCompile'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'cespare/vim-toml'
+NeoBundle 'chase/vim-ansible-yaml'
 
 if !has('unix') || has('win32unix')
   NeoBundleLazy 'Valloric/YouCompleteMe'
-  autocmd FileType c,cpp,python NeoComplCacheLock
-  autocmd FileType c,cpp,python NeoBundleSource YouCompleteMe
-  autocmd FileType c,cpp,python nnoremap <buffer> <C-k> :YcmCompleter GoTo<CR>
+  autocmd FileType c,cpp NeoComplCacheLock
+  autocmd FileType c,cpp NeoBundleSource YouCompleteMe
+  autocmd FileType c,cpp nnoremap <buffer> <C-k> :YcmCompleter GoTo<CR>
 endif
 
 if &term != "win32"
