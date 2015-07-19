@@ -40,6 +40,8 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'cespare/vim-toml'
 NeoBundle 'chase/vim-ansible-yaml'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'plasticboy/vim-markdown'
 
 if !has('unix') || has('win32unix')
   NeoBundleLazy 'Valloric/YouCompleteMe'
