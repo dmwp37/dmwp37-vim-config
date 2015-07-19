@@ -42,6 +42,8 @@ NeoBundle 'cespare/vim-toml'
 NeoBundle 'chase/vim-ansible-yaml'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'terryma/vim-expand-region'
 
 if !has('unix') || has('win32unix')
   NeoBundleLazy 'Valloric/YouCompleteMe'
@@ -189,6 +191,9 @@ let g:ycm_error_symbol = '✗'
 let g:ycm_warning_symbol = '⚠'
 let g:ycm_extra_conf_globlist = [$VIMFILES.'/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*']
 let g:ycm_global_ycm_extra_conf = $VIMFILES.'/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" Multi Cursor Find
+vnoremap <leader>mf :MultipleCursorsFind 
 
 " Recursive grep search
 nnoremap <silent> <F3> :Rgrep<CR>
