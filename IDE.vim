@@ -2,64 +2,66 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 
   " Required:
-  set runtimepath+=$VIMFILES/bundle/neobundle.vim/
+ "  set runtimepath+=$VIMFILES/bundle/neobundle.vim/
 endif
 
 " Required:
-call neobundle#begin(expand('$VIMFILES/bundle/'))
+"call neobundle#begin(expand('$VIMFILES/bundle/'))
 
-" Let NeoBundle manage NeoBundle
+" Let VimPlug manage packages
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+" PlugFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/bundle')
 
 " My Bundles here:
-" Refer to |:NeoBundle-examples|.
+" Refer to |:Plug-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
 " my scripts
-NeoBundle 'a.vim'
-NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'bufexplorer.zip'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'mbbill/echofunc'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'wesleyche/SrcExpl'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'taglist.vim'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'VisIncr'
-NeoBundle 'Visual-Mark'
-NeoBundle 'DoxyGen-Syntax'
-NeoBundle 'xuhdev/SingleCompile'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'rust-lang/rust.vim'
-NeoBundle 'cespare/vim-toml'
-NeoBundle 'chase/vim-ansible-yaml'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'terryma/vim-expand-region'
+Plug 'vim-scripts/a.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-abolish'
+Plug 'vim-scripts/bufexplorer.zip'
+Plug 'kien/ctrlp.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'mbbill/echofunc'
+Plug 'scrooloose/nerdtree'
+Plug 'wesleyche/SrcExpl'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/taglist.vim'
+Plug 'Shougo/vimproc'
+Plug 'Shougo/vimshell'
+Plug 'vim-scripts/VisIncr'
+Plug 'vim-scripts/Visual-Mark'
+"Plug 'DoxyGen-Syntax'
+Plug 'xuhdev/SingleCompile'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
+Plug 'Shougo/neocomplcache'
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+Plug 'chase/vim-ansible-yaml'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-expand-region'
 
 if !has('unix') || has('win32unix')
-  NeoBundleLazy 'Valloric/YouCompleteMe'
-  autocmd FileType c,cpp NeoComplCacheLock
-  autocmd FileType c,cpp NeoBundleSource YouCompleteMe
-  autocmd FileType c,cpp nnoremap <buffer> <C-k> :YcmCompleter GoTo<CR>
+"  NeoBundleLazy 'Valloric/YouCompleteMe'
+"  autocmd FileType c,cpp NeoComplCacheLock
+"  autocmd FileType c,cpp NeoBundleSource YouCompleteMe
+"  autocmd FileType c,cpp nnoremap <buffer> <C-k> :YcmCompleter GoTo<CR>
 endif
 
 if &term != "win32"
-  NeoBundle 'CSApprox'
+  Plug 'vim-scripts/CSApprox'
 endif
 
 if &encoding == 'utf-8'
-  "NeoBundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-  NeoBundle 'bling/vim-airline'
+  Plug 'bling/vim-airline'
 endif
+
+call plug#end()
 
 " vim-airline
 let g:airline_powerline_fonts = 1
@@ -222,13 +224,7 @@ nmap <F10>  :TrinityToggleTagList<CR>
 " Open and close the NERD_tree.vim separately
 nmap <F11>  :TrinityToggleNERDTree<CR>
 
-call neobundle#end()
 
 " Required:
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-
 
