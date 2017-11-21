@@ -47,6 +47,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-expand-region'
 
 if !has('unix') || has('win32unix')
+  Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'] }
 "  NeoBundleLazy 'Valloric/YouCompleteMe'
 "  autocmd FileType c,cpp NeoComplCacheLock
 "  autocmd FileType c,cpp NeoBundleSource YouCompleteMe
