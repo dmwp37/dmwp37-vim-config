@@ -1,23 +1,11 @@
 if has('vim_starting')
   set nocompatible               " Be iMproved
-
-  " Required:
- "  set runtimepath+=$VIMFILES/bundle/neobundle.vim/
+"  set runtimepath+=$VIMFILES/bundle/neobundle.vim/
 endif
 
-" Required:
-"call neobundle#begin(expand('$VIMFILES/bundle/'))
-
 " Let VimPlug manage packages
-" Required:
-" PlugFetch 'Shougo/neobundle.vim'
 call plug#begin('~/.vim/bundle')
 
-" My Bundles here:
-" Refer to |:Plug-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
-
-" my scripts
 Plug 'vim-scripts/a.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-abolish'
@@ -33,30 +21,17 @@ Plug 'Shougo/vimproc'
 Plug 'Shougo/vimshell'
 Plug 'vim-scripts/VisIncr'
 Plug 'vim-scripts/Visual-Mark'
-"Plug 'DoxyGen-Syntax'
 Plug 'xuhdev/SingleCompile'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'Shougo/neocomplcache'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'cespare/vim-toml'
+Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-expand-region'
-
-if !has('unix') || has('win32unix')
-  Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'] }
-"  NeoBundleLazy 'Valloric/YouCompleteMe'
-"  autocmd FileType c,cpp NeoComplCacheLock
-"  autocmd FileType c,cpp NeoBundleSource YouCompleteMe
-"  autocmd FileType c,cpp nnoremap <buffer> <C-k> :YcmCompleter GoTo<CR>
-endif
-
-if &term != "win32"
-  Plug 'vim-scripts/CSApprox'
-endif
 
 if &encoding == 'utf-8'
   Plug 'bling/vim-airline'
@@ -188,12 +163,6 @@ let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-" YCM
-let g:ycm_key_invoke_completion = '<C-j>'
-let g:ycm_error_symbol = '✗'
-let g:ycm_warning_symbol = '⚠'
-let g:ycm_extra_conf_globlist = [$VIMFILES.'/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*']
-let g:ycm_global_ycm_extra_conf = $VIMFILES.'/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Multi Cursor Find
 vnoremap <leader>mf :MultipleCursorsFind 
