@@ -108,6 +108,7 @@ set autowrite
 set notitle icon
 set nobackup
 set writebackup
+set noundofile
 
 set showmatch
 set incsearch
