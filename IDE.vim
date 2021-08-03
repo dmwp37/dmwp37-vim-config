@@ -24,9 +24,13 @@ Plug 'vim-scripts/Visual-Mark'
 Plug 'xuhdev/SingleCompile'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }

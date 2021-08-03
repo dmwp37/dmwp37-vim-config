@@ -133,6 +133,12 @@ set modeline
 " set nofoldenable			" switch off folding by default (startup time!)
 set switchbuf=useopen,usetab,newtab
 
+" not connect to X clipboard
+if has('nvim')
+else
+  set clipboard=exclude:.*
+endif
+
 set noautochdir
 set nostartofline
 set ttyfast
