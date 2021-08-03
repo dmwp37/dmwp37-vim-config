@@ -38,7 +38,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 if &encoding == 'utf-8'
-  Plug 'bling/vim-airline'
+  Plug 'vim-airline/vim-airline'
 endif
 
 call plug#end()
@@ -46,6 +46,7 @@ call plug#end()
 " vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_symbols = {'linenr': ' :', 'modified': '+', 'whitespace': '☲', 'branch': '', 'ellipsis': '...', 'paste': 'PASTE', 'maxlinenr': '☰ ', 'readonly': '', 'spell': 'SPELL', 'space': ' ', 'dirty': '!', 'colnr': ' :', 'keymap': 'Keymap:', 'crypt': '🔒', 'notexists': 'Ɇ'}
 
 " Enable matchit plugin
 source $VIMRUNTIME/macros/matchit.vim

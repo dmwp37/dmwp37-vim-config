@@ -5,10 +5,7 @@ vim config project
 
 Install
 
-1. install neobundle and curl first
-
-curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
-
+1. pip3 install --user pynvim
 2. cp _vimrc ~/.vimrc
 
 for windows
