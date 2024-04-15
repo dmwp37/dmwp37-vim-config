@@ -27,7 +27,7 @@ Plug 'tpope/vim-fugitive'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/deoplete.nvim'
+"  Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
@@ -40,6 +40,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-expand-region'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'vimpostor/vim-lumen'
+Plug 'morhetz/gruvbox'
 
 if &encoding == 'utf-8'
   Plug 'vim-airline/vim-airline'
